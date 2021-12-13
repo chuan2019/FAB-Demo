@@ -7,5 +7,7 @@ To run the code in this demo, first create a virtual environment as follows:
 then activate the virtual environment and install the dependencies:
 
 ```$ source .env/bin/activate```
+
 ```$ pip install --upgrade pip```
+
 ```$ pip install -r requirements.txt```
