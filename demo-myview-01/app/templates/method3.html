@@ -1,0 +1,38 @@
+{% extends "appbuilder/base.html" %}
+{% block content %}
+
+    <div class="container sm-margin-top">
+        <div class="row text-center lg-margin-bottom">
+            <h1>Stunning Cosmos</h1>
+            <h3 class="text-muted">
+                A simple web page showing beautiful pictures
+            </h3>
+            <b>Demo Message: </b>: {{ message }}
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <h2>Picture 1</h2>
+                <img src="/static/img/cosmos01.jpeg"
+                     width="550" height="350" title="Picture 1">
+            </div>
+            <div class="col-lg-6">
+                <h2>Picture 2</h2>
+                <img src="/static/img/cosmos02.jpeg"
+                     width="550" height="350" title="Picture 2">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <h2>Picture 3</h2>
+                <img src="/static/img/cosmos03.jpeg"
+                     width="550" height="350" title="Picture 3">
+            </div>
+            <div class="col-lg-6">
+                <h2>Picture 4</h2>
+                <img src="/static/img/cosmos04.jpeg"
+                     width="550" height="350" title="Picture 4">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
