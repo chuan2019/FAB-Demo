@@ -25,9 +25,10 @@ for pv in role_admin.permissions:
         'ProjectModelView' in pv.__repr__() \
        ) and not ( \
         'add' in pv.__repr__() or \
+        'delete' in pv.__repr__() or \
         'edit' in pv.__repr__() or \
         'post' in pv.__repr__() or \
-        'delete' in pv.__repr__() \
+        'show' in pv.__repr__() \
        ):
         appbuilder.sm.add_permission_role(role_engineer, pv)
     if 'Task Progress' in pv.__repr__() or \
@@ -50,9 +51,9 @@ for pv in role_admin.permissions:
         'Tasks Projects' in pv.__repr__() \
         ) and not ( \
         'add' in pv.__repr__() or \
+        'delete' in pv.__repr__() or \
         'edit' in pv.__repr__() or \
         'post' in pv.__repr__() or \
-        'delete' in pv.__repr__() or \
         'show' in pv.__repr__()):
         appbuilder.sm.add_permission_role(role_public, pv)
 
