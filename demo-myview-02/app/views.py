@@ -19,35 +19,8 @@ class CustomAdminFilter(BaseFilter):
         else:
             return query
 
-class ProjectModelView(ModelView):
-    datamodel = SQLAInterface(Projects)
-
-    label_columns = {'projects':'Projects'}
-    list_columns = ['id','project_name','description']
-    show_fieldsets = [
-        (
-            'Projects',
-            {'fields': ['id', 'project_name', 'description']}
-        ),
-    ]
-
-class TaskModelView(ModelView):
-    datamodel = SQLAInterface(Tasks)
-    related_views = [ProjectModelView]
-
-    label_columns = {'tasks':'Tasks'}
-    list_columns = ['id','task_name','description','project_id']
-    show_fieldsets = [
-        (
-            'Tasks',
-            {'fields': ['id', 'task_name', 'description', 'project_id']}
-        ),
-    ]
-
 class TaskProgressModelView(ModelView):
     datamodel = SQLAInterface(TaskProgress)
-    related_views = [TaskModelView]
-    related_views = [ProjectModelView]
 
     label_columns = {'task_progress':'Task Progress'}
     list_columns = ['task_id','start_time','end_time','created_by','created_on',
@@ -62,6 +35,33 @@ class TaskProgressModelView(ModelView):
         ),
     ]
     base_filters = [['', CustomAdminFilter, None]]
+
+class ProjectModelView(ModelView):
+    datamodel = SQLAInterface(Projects)
+    related_views = [TaskProgressModelView]
+
+    label_columns = {'projects':'Projects'}
+    list_columns = ['id','project_name','description']
+    show_fieldsets = [
+        (
+            'Projects',
+            {'fields': ['id', 'project_name', 'description']}
+        ),
+    ]
+
+class TaskModelView(ModelView):
+    datamodel = SQLAInterface(Tasks)
+    related_views = [TaskProgressModelView]
+
+    label_columns = {'tasks':'Tasks'}
+    list_columns = ['id','task_name','description','project_id']
+    show_fieldsets = [
+        (
+            'Tasks',
+            {'fields': ['id', 'task_name', 'description', 'project_id']}
+        ),
+    ]
+
 
 db.create_all()
 appbuilder.add_view(
