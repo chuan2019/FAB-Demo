@@ -1,0 +1,9 @@
+#!/bin/sh
+export PGPASSWORD=dbc
+dropdb -h localhost -p 5433 -U dbc fab_demo_02
+createdb -h localhost -p 5433 -U dbc fab_demo_02
+sleep 2
+
+flask fab create-admin --username admin --firstname chuan --lastname zhang --email chuan.zhang@aol.com --password admin
+sleep 2
+python load_data.py
