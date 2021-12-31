@@ -9,6 +9,9 @@ class Projects(Model):
     id           = Column(Integer, primary_key=True)
     project_name = Column(String(50), unique = True, nullable=False)
     description  = Column(String(300), nullable=True)
+    
+    def __repr__(self):
+        return self.project_name
 
 
 class Tasks(Model):
@@ -18,6 +21,9 @@ class Tasks(Model):
     project_id  = Column(Integer, ForeignKey(Projects.id))
     project_tbl = relationship('Projects', foreign_keys='Tasks.project_id')
 
+    def __repr__(self):
+        return self.task_name
+    
 
 class TaskProgress(AuditMixin, Model):
     id          = Column(Integer, primary_key=True)
