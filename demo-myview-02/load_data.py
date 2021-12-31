@@ -23,14 +23,19 @@ for pv in role_admin.permissions:
         'TaskModelView' in pv.__repr__() or \
         'Projects' in pv.__repr__() or \
         'ProjectModelView' in pv.__repr__() \
-        ) and not ( \
+       ) and not ( \
         'add' in pv.__repr__() or \
         'edit' in pv.__repr__() or \
         'post' in pv.__repr__() or \
-        'delete' in pv.__repr__()):
+        'delete' in pv.__repr__() \
+       ):
         appbuilder.sm.add_permission_role(role_engineer, pv)
     if 'Task Progress' in pv.__repr__() or \
-        'TaskProgressModelView' in pv.__repr__():
+       'TaskProgressModelView' in pv.__repr__() or \
+       'MyPassword' in pv.__repr__() or \
+       'mypassword' in pv.__repr__() or \
+       ('userinfo' in pv.__repr__() and 'userinfoedit' not in pv.__repr__()) or \
+       ('UserInfo' in pv.__repr__() and 'UserInfoEdit' not in pv.__repr__()):
         appbuilder.sm.add_permission_role(role_engineer, pv)
 
 ############### configuring role public ##############
@@ -93,4 +98,3 @@ except Exception as e:
     log.error("Task creation error: %s", e)
     db.session.rollback()
     exit(1)
-
