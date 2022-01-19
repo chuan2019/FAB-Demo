@@ -8,7 +8,7 @@ from app import appbuilder, db
 from app.models import Projects, Tasks, TaskProgress
 
 
-# pylint: disable=R0903
+# pylint: disable=R0903, W0143
 class CustomAdminFilter(BaseFilter):
     """
     User defined filter
