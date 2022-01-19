@@ -27,7 +27,7 @@ CSRF_ENABLED = True
 APP_NAME = "Fab-Demo"
 
 # Uncomment to setup Setup an App icon
-APP_ICON = "static/img/demo-logo1_850x467.png"
+APP_ICON = "/static/img/demo-logo1_850x467.png"
 
 # ----------------------------------------------------
 # AUTHENTICATION CONFIG
