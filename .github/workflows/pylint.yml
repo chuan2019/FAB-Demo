@@ -20,5 +20,5 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint `find demo-myview-01 -name \*.py -print`
-        pylint `find demo-myview-02 -name \*.py -print`
+        pylint --disable=R0401 `find demo-myview-01 -name \*.py -print`
+        pylint --disable=R0401 `find demo-myview-02 -name \*.py -print`
