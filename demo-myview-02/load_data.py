@@ -1,12 +1,11 @@
 """load_data.py"""
-# pylint: disable=R0916
+# pylint: disable=R0916, E1101
 import sys
-from datetime import datetime
 import logging
 from sqlalchemy import exc
 
-from app import appbuilder, db, views
-from app.models import Tasks, Projects, TaskProgress
+from app import appbuilder, db
+from app.models import Tasks, Projects
 
 log = logging.getLogger(__name__)
 
