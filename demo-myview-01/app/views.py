@@ -4,7 +4,7 @@ from flask_appbuilder import BaseView, expose, has_access
 
 from . import appbuilder, db
 
-
+# pylint: disable=R0201
 class DemoView(BaseView):
     """
     purpose: demonstrating how to render completely customized view (method1 & method2)
@@ -43,15 +43,5 @@ appbuilder.add_link("Message2", category='Demo View',
 
 appbuilder.add_link("Message3", category='Demo View',
                     href="/demoview/method3/")
-
-@appbuilder.app.errorhandler(404)
-def page_not_found(err):
-    '''Application wide 404 error handler'''
-    return (
-        render_template(
-            "404.html", base_template=appbuilder.base_template, appbuilder=appbuilder
-        ),
-        404,
-    )
 
 db.create_all()
