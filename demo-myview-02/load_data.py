@@ -1,5 +1,9 @@
+"""load_data.py"""
+# pylint: disable=R0916
+import sys
 from datetime import datetime
 import logging
+from sqlalchemy import exc
 
 from app import appbuilder, db, views
 from app.models import Tasks, Projects, TaskProgress
@@ -10,7 +14,7 @@ log = logging.getLogger(__name__)
 role_admin = appbuilder.sm.find_role(appbuilder.sm.auth_role_admin)
 if role_admin is None:
     log.error('Error: please run \'flask fab create-admin\' before loading data!')
-    exit(1)
+    sys.exit(1)
 
 ############# configuring role engineers #############
 role_engineer = appbuilder.sm.find_role('engineers')
@@ -79,10 +83,10 @@ try:
     db.session.add(Projects(id=1, project_name="Proj-1"))
     db.session.add(Projects(id=2, project_name="Proj-2"))
     db.session.commit()
-except Exception as e:
-    log.error("Project creation error: %s", e)
+except exc.SQLAlchemyError as err:
+    log.error("Project creation error: %s", err)
     db.session.rollback()
-    exit(1)
+    sys.exit(1)
 
 ############################# adding tasks ############################
 try:
@@ -95,7 +99,7 @@ try:
     db.session.add(Tasks(id=7, task_name="P2T4", project_id=2))
     db.session.add(Tasks(id=8, task_name="P2T5", project_id=2))
     db.session.commit()
-except Exception as e:
-    log.error("Task creation error: %s", e)
+except exc.SQLAlchemyError as err:
+    log.error("Task creation error: %s", err)
     db.session.rollback()
-    exit(1)
+    sys.exit(1)
