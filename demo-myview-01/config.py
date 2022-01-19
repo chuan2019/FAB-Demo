@@ -1,4 +1,3 @@
-# pylint: disable=R0401
 """config.py"""
 import os
 from flask_appbuilder.security.manager import AUTH_DB
