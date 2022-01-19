@@ -20,4 +20,5 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint `ls -R|grep .py$|xargs`
+        pylint `find demo-myview-01 -name \*.py -print`
+        pylint `find demo-myview-02 -name \*.py -print`
