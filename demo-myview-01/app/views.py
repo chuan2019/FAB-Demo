@@ -14,24 +14,24 @@ class DemoView(BaseView):
 
     @expose('/method1/')
     @has_access
-    def method1(self):
+    def page1(self):
         '''API without parameter + customized view'''
         message = 'message #1: Method1'
         return render_template('method1.html', message=message)
 
     @expose('/method2/<message>')
     @has_access
-    def method2(self, message):
+    def page2(self, message):
         '''API with parameter + customized view'''
-        message = 'message #2: %s' % (message)
+        message = f'message #2: {message}'
         return render_template('method1.html', message=message)
 
     @expose('/method3/')
     @has_access
-    def method3(self):
+    def page3(self):
         '''API without parameter + view extending the base layout'''
         message = 'message #3: Method3'
-        return render_template('method3.html', message=message, 
+        return render_template('method3.html', message=message,
                                base_template=appbuilder.base_template, appbuilder=appbuilder)
 
 appbuilder.add_view(DemoView(), "Message1",
@@ -44,11 +44,9 @@ appbuilder.add_link("Message2", category='Demo View',
 appbuilder.add_link("Message3", category='Demo View',
                     href="/demoview/method3/")
 
-
-
-# Application wide 404 error handler
 @appbuilder.app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(err):
+    '''Application wide 404 error handler'''
     return (
         render_template(
             "404.html", base_template=appbuilder.base_template, appbuilder=appbuilder
