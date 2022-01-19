@@ -1,5 +1,5 @@
 """views.py"""
-from flask import render_template, g
+from flask import g
 from sqlalchemy import or_
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder import ModelView
@@ -24,8 +24,7 @@ class CustomAdminFilter(BaseFilter):
         if not role_admin in g.user.roles:
             return query.filter(or_(TaskProgress.created_by == g.user,
                                     TaskProgress.changed_by == g.user))
-        else:
-            return query
+        return query
 
 class TaskProgressModelView(ModelView):
     """Model View for the TaskProgress Table"""
