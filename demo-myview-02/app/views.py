@@ -1,25 +1,34 @@
+"""views.py"""
 from flask import render_template, g
-from flask_login import AnonymousUserMixin
 from sqlalchemy import or_
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder import ModelView
-from flask_appbuilder.models.sqla.filters import FilterEqualFunction
 from flask_appbuilder.models.filters import BaseFilter
-from . import appbuilder, db
-from .models import Projects, Tasks, TaskProgress
+from app import appbuilder, db
+from app.models import Projects, Tasks, TaskProgress
 
 
+# pylint: disable=R0903
 class CustomAdminFilter(BaseFilter):
+    """
+    User defined filter
+    Purpose: if user is not registered (in public domain), all records are returned
+             if user is registered but not admin, only records created or changed by
+             them are returned
+             if user has admin permission, all records are returned
+    """
     def apply(self, query, value):
         role_admin = appbuilder.sm.find_role(appbuilder.sm.auth_role_admin)
         if g.user.is_anonymous:
             return query
         if not role_admin in g.user.roles:
-            return query.filter(or_(TaskProgress.created_by == g.user, TaskProgress.changed_by == g.user))
+            return query.filter(or_(TaskProgress.created_by == g.user,
+                                    TaskProgress.changed_by == g.user))
         else:
             return query
 
 class TaskProgressModelView(ModelView):
+    """Model View for the TaskProgress Table"""
     datamodel = SQLAInterface(TaskProgress)
 
     label_columns = {'task_progress':'Task Progress'}
@@ -37,6 +46,7 @@ class TaskProgressModelView(ModelView):
     base_filters = [['', CustomAdminFilter, None]]
 
 class ProjectModelView(ModelView):
+    """Model View for the Projects Table"""
     datamodel = SQLAInterface(Projects)
     related_views = [TaskProgressModelView]
 
@@ -50,6 +60,7 @@ class ProjectModelView(ModelView):
     ]
 
 class TaskModelView(ModelView):
+    """Model View for the Tasks Table"""
     datamodel = SQLAInterface(Tasks)
     related_views = [TaskProgressModelView]
 
@@ -85,16 +96,3 @@ appbuilder.add_view(
     category = "Tasks Projects",
     category_icon = "fa-envelope"
 )
-
-"""
-    Application wide 404 error handler
-"""
-@appbuilder.app.errorhandler(404)
-def page_not_found(e):
-    return (
-        render_template(
-            "404.html", base_template=appbuilder.base_template, appbuilder=appbuilder
-        ),
-        404,
-    )
-
