@@ -6,11 +6,13 @@ To run the code in this demo, first create a virtual environment as follows:
 
 then activate the virtual environment and install the dependencies:
 
-```$ source .env/bin/activate```
+```
+$ source .env/bin/activate
 
-```$ pip install --upgrade pip```
+$ pip install --upgrade pip
 
-```$ pip install -r requirements.txt```
+$ pip install -r requirements.txt
+```
 
 ## Web App Demo \#1
 
@@ -20,8 +22,11 @@ To run the web app under the folder `demo-myview-01`, you need to go to the demo
 
 then run the following commands to start the web server:
 
-```$ export FLASK_APP=app```
-```$ flask run --host=0.0.0.0 --port=8080```
+```
+$ export FLASK_APP=app
+
+$ flask run --host=0.0.0.0 --port=8080
+```
 
 or you can run the following command directly too:
 
