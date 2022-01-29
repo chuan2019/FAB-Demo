@@ -2,7 +2,7 @@
 import os
 import requests
 
-from jobs import logger, jobs_path
+from jobs import logger, jobs_path # pylint: disable=E0401
 
 def get_message() -> str:
     '''retrieving the email message'''
@@ -11,8 +11,8 @@ def get_message() -> str:
     if not os.path.isfile(msg_path):
         raise IOError(f'{msg_path} not found!')
     message= ''
-    with open(msg_path, 'r', encoding='utf-8') as fp:
-        message = fp.read()
+    with open(msg_path, 'r', encoding='utf-8') as f_msg:
+        message = f_msg.read()
     return message
 
 def get_recipients(url):
