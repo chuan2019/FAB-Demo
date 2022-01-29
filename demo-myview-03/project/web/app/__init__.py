@@ -10,4 +10,4 @@ app.config.from_object("project.web.config")
 db = SQLA(app)
 appbuilder = AppBuilder(app, db.session, indexview=EmailIndexView)
 
-from . import models, api, views
+from . import models, api, views # pylint: disable=C0413
