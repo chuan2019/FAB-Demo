@@ -1,8 +1,2 @@
-*.pyc
 app.db
-./tmp
-./build/*
-.idea
-env
-venv
-*.sublime*
+web.db
