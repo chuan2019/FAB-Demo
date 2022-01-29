@@ -6,7 +6,8 @@ from flask_appbuilder.models.filters import BaseFilter
 from . import appbuilder
 from .models import EmailModel
 
-class EmailFilter(BaseFilter):
+class EmailFilter(BaseFilter): # pylint: disable=R0903
+    """user-defined filter for querying email_address by value"""
     name = "Email Address Filter"
     arg_name = "opr"
 
@@ -18,6 +19,7 @@ class EmailFilter(BaseFilter):
 
 
 class EmailModelApi(ModelRestApi):
+    """RESTful API for exposing email_model table"""
     resource_name = 'recipients'
     datamodel = SQLAInterface(EmailModel)
     allow_browser_login = True
@@ -33,4 +35,3 @@ class EmailModelApi(ModelRestApi):
 
 
 appbuilder.add_api(EmailModelApi)
-
