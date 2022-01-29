@@ -1,7 +1,7 @@
 """project.jobs.__init__"""
 import os
-import yaml
 import logging
+import yaml
 from celery import Celery
 
 jobs_path = os.path.abspath(os.path.dirname(__file__))
