@@ -1,0 +1,53 @@
+{% extends "appbuilder/base.html" %}
+
+{% block head_js %}
+    {{ super() }}
+    <script src="{{url_for('static',filename='js/register_emails.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<h1><center>{{_('Welcome To the Weekly Email Notification Service')}}<center></h1>
+
+<div class="well">
+    <p>
+        If you want to receive weekly emails on Monday morning, please register your email address below.
+    </p>
+    <p>
+        Or if you have registered your email, but you want to stop receiving weekly
+        emails for a while, please also feel free to unregister your email address below.
+    </p>
+    <p>
+        This email notification service is totally self served. Have any questions or
+        comments? Feel free to contact the system administrator.
+    </p>
+</div>
+
+<section class="vh-100">
+    <div class="container h-100">
+            <h2 class="text-black mb-4">Register/Unregister Your Email</h2>
+        <div class="row h-100">
+            <div class="col-12">
+                <div class="card w-75" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <hr class="mx-n3">
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2 ps-5">
+                                <h6 class="mb-0">Email address</h6>
+                            </div>
+                            <div class="col-md-2 pe-5">
+                                <input id="email_address" type="email" class="form-control form-control-lg" placeholder="example@example.com" />
+                            </div>
+                            <div class="col-md-4 btn-group">
+                                <a class="btn btn-outline-primary" id="register">Register</a>
+                                <a class="btn btn-outline-primary" id="unregister">Unregister</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

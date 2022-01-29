@@ -1,0 +1,4 @@
+smtp_host: smtp.gmail.com
+smtp_port: 465
+smtp_account: <YOUR_EMAIL_ACCOUNT>
+smtp_password: <YOUR_EMAIL_PASSWORD>

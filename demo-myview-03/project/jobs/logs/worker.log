@@ -1,0 +1,7 @@
+[2022-01-29 07:07:26,626: INFO/MainProcess] Connected to redis://:**@broker:6379/0
+[2022-01-29 07:07:26,651: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-29 07:07:27,671: INFO/MainProcess] mingle: all alone
+[2022-01-29 07:07:27,692: INFO/MainProcess] celery@600c73bf192a ready.
+[2022-01-29 07:07:34,576: INFO/MainProcess] Events of group {task} enabled by remote.
+[2022-01-29 07:10:00,108: INFO/MainProcess] Task jobs.tasks.email_notification[d941e025-8279-4d05-b8c2-4af7c66dc999] received
+[2022-01-29 07:10:02,399: INFO/ForkPoolWorker-1] Task jobs.tasks.email_notification[d941e025-8279-4d05-b8c2-4af7c66dc999] succeeded in 2.288414663998992s: True
