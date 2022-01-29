@@ -11,7 +11,7 @@ logging.basicConfig(format="%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-# loading smtp server configuration data 
+# loading smtp server configuration data
 SMTP_HOST     = None
 SMTP_PORT     = None
 SMTP_ACCOUNT  = None
@@ -37,4 +37,3 @@ celery_app = Celery("tasks", backend=backend, broker=broker)
 celery_app.conf.update(
     timezone='America/Los_Angeles',
 )
-
