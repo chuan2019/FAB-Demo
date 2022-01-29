@@ -24,6 +24,18 @@ services:
         volumes:
           - ./data/pgdb:/var/lib/postgresql/data
 
+    web:
+        build:
+            context: .
+            dockerfile: dockerfile.web
+        container_name: demo-03_web
+        working_dir: /usr/src
+        command: flask run --host=0.0.0.0 --port=8080
+        environment:
+          - FLASK_APP=project/web/app
+        ports:
+          - "8080:8080"
+
     scheduler:
         build:
             context: .
@@ -38,6 +50,7 @@ services:
           - CELERY_RESULT_BACKEND=db+postgresql://dbc:dbc@backend:5432/task_result
           - WEB_SERVER_URL=http://web:8080
         depends_on:
+          - web
           - broker
           - backend
 
@@ -55,6 +68,7 @@ services:
           - CELERY_RESULT_BACKEND=db+postgresql://dbc:dbc@backend:5432/task_result
           - WEB_SERVER_URL=http://web:8080
         depends_on:
+          - web
           - broker
           - backend
 
@@ -74,22 +88,3 @@ services:
           - backend
           - worker
           - scheduler
-
-
-    web:
-        build:
-            context: .
-            dockerfile: dockerfile.web
-        container_name: demo-03_web
-        working_dir: /usr/src
-        command: flask run --host=0.0.0.0 --port=8080
-        environment:
-          - FLASK_APP=project/web/app
-        ports:
-          - "8080:8080"
-        depends_on:
-          - broker
-          - backend
-          - worker
-          - scheduler
-
