@@ -1,6 +1,6 @@
 """project.web.app.models"""
 from flask_appbuilder import Model
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String
 
 class EmailModel(Model):
     """
@@ -12,5 +12,4 @@ class EmailModel(Model):
     email_address = Column(String(64), nullable=False, unique=True)
 
     def __repr__(self) -> str:
-        return self.email_address
-
+        return self.email_address.__str__()
