@@ -11,3 +11,4 @@ COPY requirements.web .
 
 RUN pip install -r requirements.web
 
+RUN python ./project/web/config_roles.py
