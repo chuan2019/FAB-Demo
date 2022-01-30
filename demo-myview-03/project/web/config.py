@@ -41,6 +41,4 @@ AUTH_ROLE_PUBLIC = 'Public'
 AUTH_USER_REGISTRATION = False
 
 # Theme configuration
-# these are located on static/appbuilder/css/themes
-# you can create your own and easily use them placing them on the same dir structure to override
-APP_THEME = "../../../css/readable.css"
+APP_THEME = "../../../css/my_readable.css"
