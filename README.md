@@ -45,3 +45,11 @@ then do the same as what is described in the above section.
 
 For more detailed explanations for this demo, please refer to my other tutorial: <a href="https://chuan-zhang.medium.com/introduction-to-flask-appbuilder-building-a-simple-web-service-2-786e09c59a03">Introduction to Flask AppBuilder — Building a Simple Web Service (2)</a>
 
+## Web App Demo \#3
+
+To run the web app under the folder `demo-myview-03`, you need to get your SMTP server setup, and get the file `project/jobs/res/config.yml` updated accordingly. Then start all the six containers by executing the following command
+
+```$ docker-compose up -d --build```
+
+For detailed explanations, please refer to my tutorial: <a href="https://chuan-zhang.medium.com/introduction-to-flask-appbuilder-integrating-with-celery-scheduler-99d37770bb62">Introduction to Flask AppBuilder - Integrating with Celery Scheduler</a>
+
