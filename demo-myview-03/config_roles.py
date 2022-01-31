@@ -40,4 +40,3 @@ user_admin = appbuilder.sm.add_user(
     email='admin@fab1.com', role=role_admin,
     password='admin'
 )
-
