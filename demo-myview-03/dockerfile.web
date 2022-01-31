@@ -7,8 +7,9 @@ ENV PYTHONUNBUFFERED 1
 
 RUN pip install --upgrade pip
 COPY ./project ./project
-COPY requirements.web .
 
+COPY requirements.web .
 RUN pip install -r requirements.web
 
-RUN python ./project/web/config_roles.py
+COPY config_roles.py .
+RUN python config_roles.py
