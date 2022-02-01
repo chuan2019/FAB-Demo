@@ -1,6 +1,6 @@
 # FAB-Demo
 
-To run the code in this demo, first create a virtual environment as follows:
+To run the code in demos \#1 and \#2, you need to create a virtual environment as follows (demo \#3 does not need local virtual environment, unless you want to run web server on your host machine separately):
 
 ```$ python -m venv .env```
 
@@ -13,6 +13,8 @@ $ pip install --upgrade pip
 
 $ pip install -r requirements.txt
 ```
+
+then follow the instructions described in the next two sections.
 
 ## Web App Demo \#1
 
